@@ -1,0 +1,108 @@
+<?php
+global $OUTPUT;
+// set to defaults if undefined
+if (!isset($config->auth_serverurl)) {
+    $config->auth_serverurl  = '';
+}
+
+if (!isset($config->username)) {
+    $config->username = '';
+}
+if (!isset($config->password)) {
+    $config->password = '';
+}
+
+if (!isset($config->changepasswordurl)) {
+    $config->changepasswordurl = '';
+}
+
+if (!isset($config->canchangepassword)) {
+    $config->canchangepassword = '';
+}
+?>
+<table cellspacing="0" cellpadding="5" border="0">
+
+
+
+
+<tr valign="top" class="required">
+    <td align="right"><label for="auth_serverurl">URL</label></td>
+    <td>
+        <input id="auth_serverurl" name="auth_serverurl" type="text" size="50" value="<?php echo $config->auth_serverurl; ?>" />
+        <?php
+        if (isset($err["auth_serverurl"])) {
+            echo $OUTPUT->error_text($err["auth_serverurl"]);
+        }
+        ?>
+    </td>
+    <td>URL del servicio REST</td>
+</tr>
+
+<tr valign="top" class="required">
+    <td align="right"><label for="username">Usuario</label></td>
+    <td>
+        <input id="username" name="username" type="text" size="50" value="<?php p($config->username)?>" autocomplete="off"/>
+        <?php
+
+        if (isset($err["username"])) {
+            echo $OUTPUT->error_text($err["username"]);
+        }
+
+        ?>
+    </td>
+    <td>
+    Usuario para consumir el servicio web
+    </td>
+</tr>
+
+<tr valign="top" class="required">
+    <td align="right"><label for="password">Contraseña</label></td>
+    <td>
+        <input id="password" name="password" type="text" size="50" value="<?php p($config->password)?>" autocomplete="off"/>
+        <?php
+
+        if (isset($err["password"])) {
+            echo $OUTPUT->error_text($err["password"]);
+        }
+
+        ?>
+    </td>
+    <td>
+    Contraseña para consumir el servicio web
+    </td>
+</tr>
+
+<tr valign="top">
+    <td align="right"><label for="canchangepassword">Puede cambiar contraseña</label></td>
+    <td>
+        <input id="canchangepassword" name="canchangepassword" type="text" value="<?php echo $config->canchangepassword ?>" />
+        <?php
+
+        if (isset($err['canchangepassword'])) {
+            echo $OUTPUT->error_text($err['canchangepassword']);
+        }
+
+        ?>
+    </td>
+    <td>Se acepta "SI" o "NO". Indica si el usuario podrá cambiar la contraseña, de ser afirmativo al seleccionar "cambiar contraseña" será redirigido a la url que se indique en el siguiente campo.</td>
+</tr>
+
+<tr valign="top">
+    <td align="right"><label for="changepasswordurl">URL Cambiar Contraseña</label></td>
+    <td>
+        <input id="changepasswordurl" name="changepasswordurl" type="text" size="50"  value="<?php echo $config->changepasswordurl ?>" />
+        <?php
+
+        if (isset($err['changepasswordurl'])) {
+            echo $OUTPUT->error_text($err['changepasswordurl']);
+        }
+
+        ?>
+    </td>
+    <td>URL del sistema para cambiar la contraseña</td>
+</tr>
+
+<?php
+//print_auth_lock_options($this->authtype, $user_fields, '', false, true);
+?>
+</table>

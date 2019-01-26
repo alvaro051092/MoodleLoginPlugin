@@ -1,0 +1,18 @@
+{
+    "name": "alvaroDevotto/moodle-auth_ws",
+    "description": "This plugins allows your Moodle users to be authenticated against an external webservice",
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Alvaro Devotto",
+            "email": "alvaro051092@gmail.com"
+        }
+    ],
+    "type": "moodle-auth",
+    "require": {
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "installer-name": "ws"
+    }
+}
